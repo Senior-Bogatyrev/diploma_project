@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}Угадай число{% endblock %}
+{% block content %}
+<div id="content">
+    <div id="game-field">
+        <h1>
+            Игра "Угадай число"
+        </h1><br>
+        <h3>Угадайте число от 1 до 100</h3><br>
+        <input type="text" name="number" placeholder="Введите число" class="guess-num-input"><br>
+        <div class="guess-number-help">
+          <div class="result_check">
+            <span class="result-check-label">Результат:</span>
+            <span class="result-check-out"></span>
+          </div>
+          <div>
+            <span class="result-help">Подсказка:</span>
+            <span class="result-help-out"></span>
+          </div>
+          <div>
+            <span class="result-count-label">Число попыток:</span>
+            <span class="result-count-out"></span>
+          </div>
+        </div>
+        <button type="submit" class="guess-num-button">Отправить</button>
+    </div>
+</div>
+<script src="{% static 'games/js/guessNumber.js' %}"></script>
+{% endblock %}

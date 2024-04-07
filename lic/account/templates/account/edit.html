@@ -1,0 +1,26 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block title %}Редактировать аккаунт{% endblock %}
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+    <li class="{{ message.tags }}">
+    {{ message|safe }}
+    <button type="submit" class="close close-btn"> X </button>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+<form method="post" enctype="multipart/form-data" id="edit-form">
+  <fieldset id="edit-fieldset">
+    <p id="reg_p">Редактировать аккаунт</p>
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    {% csrf_token %}
+    <p id="edit-contain"><input type="submit" value="Сохранить изменения" id="edit-btn"></p>
+  </fieldset>
+</form>
+<script src="{% static 'account/js/script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,402 @@
+* { 
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    display: block;
+    background-image: url('../img/LiC.png');
+    background-position: 60% 0;
+    height: 10vh;
+}
+main{
+    height: 88vh;
+    background-image: url('../img/background.jpg');
+}
+footer{
+    height: 2vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: right;
+}
+footer h4 {
+    font-size: 1.5vh;
+    margin-right: 2vh;
+}
+ul{
+    list-style-type: none;
+}
+.nav_li{
+    padding-top: 2.5vh;
+    padding-left: 1vh;
+}
+#nav_ul{
+    font-weight: 700;
+    font-size: 3.3vh;
+    margin-top: 6vh;
+}
+
+.a-nav{
+    text-decoration:none;
+    color: rgb(255, 255, 255);
+    transition: 0s color font-size;
+    transition-delay: 10ms;
+}
+.a-nav:hover{
+    color: aqua;
+    font-size: 3.5vh;
+}
+#icon{
+    width: 100%;
+    height: 100%;
+}
+#left-nav{
+    background-color: rgba(0, 0, 0, 0.7); 
+    height: 100%;
+    width:11%;
+    float: left;
+    border: 0.5vh solid rgba(0, 0, 0, 0.8);
+}
+#content{
+    background: rgb(0,0,0,0.5);;
+    height: 100%;
+    width: 89%;
+    float: left;
+    overflow-y:scroll;
+}
+#content p {
+    font-size: 80px;
+    text-align: center;
+}
+
+/* registration */
+
+form{
+    padding:3% 40%;
+}
+fieldset{
+    width: 90%;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10%;
+}
+legend {
+    font-size: 30px;
+    color: rgb(8, 0, 255);
+    font-weight: 700;
+}
+.reg_label, .reg_input, #reg_button {
+    margin: 5px 30px;
+    font-size: 20px;
+}
+.reg_label{
+    color: white
+}
+.reg_input{
+    width: 80%;
+    height: 30px;
+    padding-left: 10px;
+}
+.reg_input:hover{
+    background-color: #53d09e;
+}
+#reg_button{
+    margin-left: 65px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+}
+#reg_button:hover{
+    background-color: rgb(0, 0, 0);
+}
+#reg_p{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+
+/* entry */
+#entry_p{
+    margin-left: 6vw;
+    color: white;
+    font-size: 40px;
+}
+#entry_button{
+    margin-top: 10px;
+    margin-left: 2vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 1vw 6vw;
+}
+#entry_button:hover{
+    background-color: rgb(0, 0, 0);
+}
+#reg_a{
+    margin-left: 6vw;
+}
+/*  */
+
+#header-logo, #header-entry{
+    float: left;
+    width: 11%;
+    height: 10vh;
+}
+#header-entry{
+    margin-left: 78%;
+}
+#header-entry-button{
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 1vw;
+    float: left;
+}
+#round {
+    /* margin-left: 20px; */
+    margin-right: 20px;
+    margin-top: 3px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid green;
+    box-shadow: 0 0 7px #666;
+    float: right;
+}
+#error{
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 20px;
+    color: red;
+}
+
+
+/* games */
+#game-field{
+    color: white;
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 40%;
+    margin: 5% 26%;
+    display: block;
+    text-align: center;
+}
+.guess-num-input{
+    width: 40%;
+    height: 30px;
+    padding-left: 10px;
+}
+.guess-num-input:hover{
+    background-color: #53d09e;
+}
+.guess-number-help{
+    color: yellow;
+    margin-top: 10px;
+}
+.guess-num-button{
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 1vw 6vw;
+}
+#guess-num-button:hover{
+    background-color: rgb(0, 0, 0);
+}
+#all-games{
+    display: flex;
+}
+.game{
+    min-width: 30%;
+    max-width: 30%;
+    height: 20vh;
+    border: 2px solid black;
+    margin-top: 1vh;
+    margin-left: 3%;
+    display: block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+#guess-num-bg{
+    width: 100%;
+    background-image: url('https://lh4.ggpht.com/OF6-XCKzfVKLMLgSZOwvYnmj0NNOhOzu9meOAr1EJA-rWQ0HgSWjo-wCGRkKxHVkO212=h500');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#guess-word-bg{
+    width: 100%;
+    background-image: url('https://content-20.foto.my.mail.ru/corp/app-pic-history/_myapps/s-93349.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#about{
+    background-color: rgb(85, 189, 189);
+    margin-left: 30%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 10vh;
+}
+.helptext{
+    padding: 5px;
+    color: yellowgreen;
+}
+label{
+    margin: 5px 30px;
+    font-size: 20px;
+    color: white
+}
+#login-form .errorlist,
+#edit-form .errorlist{
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#edit-form .errorlist{
+    margin-bottom: 0;
+}
+.errorlist{
+    font-size: 20px;
+    color: red !important;
+}
+
+/* edit */
+#edit-form{
+    padding:3% 28%;
+}
+#edit-fieldset{
+    width: 90%;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10%;
+}
+#edit-fieldset p{
+    padding-top: 20px;
+    color: white;
+}
+#edit-contain{
+    text-align: center;
+}
+#edit-btn{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    margin: 0 auto;
+    display: block;
+}
+#edit-btn:hover{
+    background-color: rgb(0, 0, 0);
+}
+
+
+#not-nav{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    justify-content: center;
+    text-align: center;
+}
+#not-nav a,
+#not-nav a:link,
+#not-nav a:hover,
+#not-nav a:visited,
+#not-nav a:active {
+    color: yellowgreen;
+    font-size: 20px;
+    font-style: italic;
+}
+#password-reset{
+    padding: 30px;
+    text-align: left;
+}
+#password-reset label{
+    margin: 0;
+    white-space: nowrap;
+}
+
+#password-reset p{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#info{
+    color: yellow;
+}
+#login-form a{
+    margin-left: 50px;
+}
+
+/* messages */
+
+ul.messages {
+    margin-left: 11%;
+    padding:0;
+    list-style-type:
+    none;
+}
+ul.messages li.success,
+ul.messages li.warning,
+ul.messages li.error,
+ul.messages li.info {
+    margin:0;
+    padding:14px 20px;
+    list-style:none;
+    color:#fff;
+}
+
+ul.messages li.success { background:#81ce81; }
+ul.messages li.success a { color:#0ac33e; }
+
+ul.messages li.error { background:#a30029; color:#e9828e; }
+ul.messages li.error a { color:#e9828e; }
+
+ul.messages li.info { background:#faffae; color:#696b4e; }
+ul.messages li.info a { color:#1586de; }
+
+ul.messages li.warning { background:#de9404; }
+ul.messages li.warning a { color:#f49000; }
+
+ul.messages li button.close {
+    margin:0;
+    float:right;
+    opacity:1;
+    border:0;
+    box-shadow:none;
+    text-shadow:none;
+}
+
+
+
+#settings{
+    padding: 30px;
+}
+#settings li{
+    padding-bottom: 20px;
+}
+#settings a,
+#settings a:link,
+#settings a:hover,
+#settings a:visited,
+#settings a:active {
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.change-pass ul,
+#password-reset ul{
+    padding-top: 10px;
+    padding-left: 50px;
+    list-style: disc;
+    color: yellow;
+}
+
+#password-reset ul{
+    padding-top: 0;
+    padding-left: 20px;
+}

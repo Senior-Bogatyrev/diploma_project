@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Игры{% endblock %}
+{% block content %}
+
+<div id="content">
+    <div id="all-games">
+        <a href="{% url 'guess_number' %}" class="game" id="guess-num-bg"><h1>Угадай число!</h1></a>
+        <a href="{% url 'guess_word' %}" class="game" id="guess-word-bg"></a>
+    </div>
+</div>
+{% endblock %}

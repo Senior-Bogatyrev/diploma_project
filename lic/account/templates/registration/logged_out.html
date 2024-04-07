@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Выход{% endblock %}
+{% block logo_touch %}{%endblock%}
+{% block foto %}{% endblock %}
+{% block navigation %}{% endblock %}
+
+{% block content %}
+<div id="not-nav">
+  <h1>Выход</h1><br><br>
+  <h3>
+    Вы успешно вышли из аккаунта. 
+    Вы можете снова <a href="{% url 'login' %}">войти</a>.
+  </h3>
+</div>
+{% endblock %}

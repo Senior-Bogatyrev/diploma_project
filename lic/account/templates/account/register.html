@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Вход{% endblock %}
+{% block logo_touch %}{%endblock%}
+{% block foto %}{% endblock %}
+{% block navigation %}{% endblock %}
+{% block content %}
+<form method="post">
+  <fieldset>
+    <p id="reg_p">Регистрация</p>
+    {{ user_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Зарегистрироваться" id="reg_button"></p>
+  </fieldset>
+  </form>
+{% endblock %}

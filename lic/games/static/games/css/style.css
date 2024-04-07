@@ -1,0 +1,128 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+.letterBtn{
+    width: 50px;
+    margin: 5px;
+    cursor: pointer;
+}
+.letterBtn:hover{
+    background-color: rgba(0, 136, 255, 0.517);
+}
+#word {
+    font-size:  24px;
+}
+#guesses {
+    font-size:  18px;
+}
+#buttons{
+    width: 670px;
+}
+#stage{
+    width: 160px;
+    height: 280px;
+    margin-left: 185px;
+    background-image: url(../img/stage0.png);
+}
+.inpLetters{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: white;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    border: 5px solid rgba(106, 106, 106, 0.7);
+    width: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-header {
+    padding: 2px 16px;
+    background-color: rgb(0,0,0,0.7);
+    color: white;
+}
+.modal-body {padding: 2px 16px;}
+.modal-footer {
+    padding: 2px 16px;
+    background-color: rgb(0,0,0,0.7);
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerBtn{
+    width: 90px;
+    height: 50px;
+    background-color: aliceblue;
+    margin: 0;
+    cursor: pointer;
+}
+.footerBtn:hover{
+    background-color: aquamarine;
+}
+.modal-header, .modal-body, .modal-footer{
+    text-align: center;
+}
+#container{
+    display: flex;
+    justify-content: center;
+}
+
+#letStg{
+    display: flex;
+}
+#letters{
+    margin-left: 5px;
+    margin-top: 180px;
+    width: 304px;
+    height: 100px;
+}
+#back{
+    margin-top: 5vh;
+    background-color: rgb(0, 0, 0, 0.5);
+}
+#title{
+    text-align: center;
+    color: white;
+}

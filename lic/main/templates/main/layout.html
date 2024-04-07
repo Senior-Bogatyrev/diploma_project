@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="icon" href="{% static 'main/images/favicon.ico' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    
+    <header>
+        <div id="header-logo">
+            <a {% block logo_touch %}href="{% url 'main' %}"{% endblock %}><img src="{% static 'main/img/LIClogo.png' %}" id="icon" ></a>
+        </div>
+        <div id="header-entry">
+            {% block foto %}
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" id="header-entry-button">Выйти</button>
+            </form>
+            <!-- <img src="{% static 'main/img/noPhoto.jpg' %}" alt="foto" id="round"> -->
+            {% endblock %}
+            {% block entryBtn %}{% endblock %}
+        </div>
+    </header>
+    <main>
+        {% block navigation %}
+        <div id="left-nav">
+            <aside>
+                <ul id="nav_ul">
+                    <li class="nav_li"><a href="{% url 'main' %}" class="a-nav">Главная</a></li>
+                    <li class="nav_li"><a href="{% url 'news' %}" class="a-nav">Новости</a></li>
+                    <li class="nav_li"><a href="{% url 'friends' %}" class="a-nav">Друзья</a></li>
+                    <li class="nav_li"><a href="{% url 'message' %}" class="a-nav">Сообщения</a></li>
+                    <li class="nav_li"><a href="{% url 'games' %}" class="a-nav">Игры</a></li>
+                    <li class="nav_li"><a href="{% url 'settings' %}" class="a-nav">Настройки</a></li>
+                    <li class="nav_li"><a href="{% url 'about' %}" class="a-nav">О нас</a></li>
+                </ul>
+            </aside>
+        </div>
+        {% endblock %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <h4>Юсуф Богатырев 2024 &copy;</h4>
+    </footer>
+</body>
+</html>

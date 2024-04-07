@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Настройки{% endblock %}
+{% block content %}
+<div id="content">
+  <ul id="settings">
+    <li><a href="{% url 'edit' %}">Редактировать аккаунт</a></li>
+    <li><a href="{% url 'password_change' %}">Изменить пароль</a></li>
+  </ul>
+  
+</div>
+{% endblock %}
