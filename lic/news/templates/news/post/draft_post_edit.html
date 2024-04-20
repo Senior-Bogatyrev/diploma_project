@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Редактировать новость{% endblock %}
+
+{% block content %}
+<div id="main-news">
+  <p id="news-top">Редактировать новость:</p><br><br>
+  <form method="post" class="add_news">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="draft-publish draft-button">Сохранить изменения</button>
+      <button type="button" onclick="history.back()" class="delete draft-button">Отмена</button>
+    </form>
+</div>
+{% endblock %}

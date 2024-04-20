@@ -1,0 +1,39 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Черновики{% endblock %}
+
+{% block content %}
+<div id="main-news">
+  <p id="news-top">Черновики</p>
+  <div id="news-blocks">
+    {% if not draft_posts %}
+    <div class="news">
+      <div id="news-body" class="center">Здесь пока ничего нет.</div>
+      <button class="guess-num-button" onclick='history.back()'>Назад</button>
+    </div>
+    {% else %}
+      {% for draft_post in draft_posts %}
+      <div class="news">
+        <div id="news-title"><h3>{{ draft_post.title }}</h3></div>
+        <div id="news-body">{{ draft_post.body|truncatewords:30|linebreaks }}
+        </div>
+        
+        <div id="published-news"><i>
+        {% if draft_post.updated != draft_post.created %}
+          Изменено {{ draft_post.updated }}
+        {% else %}
+          Создано {{ draft_post.created }}
+        {% endif %}        
+        </i></div>
+
+        <button class="draft-publish draft-button" onclick="window.location.href = `{% url 'news:draft_to_publish' draft_post.id %}`">Опубликовать</button>
+        <button class="change draft-button" onclick="window.location.href = `{% url 'news:draft_edit' draft_post.id %}`">Изменить</button>
+        <button class="delete draft-button" onclick="window.location.href = `{% url 'news:draft_delete' draft_post.id %}`">Удалить</button>
+      </div><br>
+      {% endfor %}
+        <button class="guess-num-button" onclick="window.location.href = `{% url 'news:post_list' %}`">Назад</button>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

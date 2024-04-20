@@ -11,11 +11,6 @@ from .forms import CustomAuthenticationForm
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
 
-@login_required
-def dashboard(request):
-    return render(request,
-                  'account/dashboard.html',
-                  {'section': 'dashboard'})
 
 def register(request):
     if request.method == 'POST':

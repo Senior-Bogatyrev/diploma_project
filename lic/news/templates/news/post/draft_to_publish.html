@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Публикация{% endblock %}
+
+{% block content %}
+<div class="detail-news">
+  <p id="draft-delete-title">Публикация:</p><br><br>
+  <p class="draft-delete-body">Вы уверены, что хотите опубликовать новость "{{ post.title }}"?</p><br><br>
+  <form method="post" id="draft-delete-form">
+      {% csrf_token %}
+      <button type="submit" class="draft-publish draft-button">Опубликовать</button>
+      <button type="button" onclick="history.back()" class="delete draft-button">Отмена</button>
+    </form>
+</div>
+{% endblock %}

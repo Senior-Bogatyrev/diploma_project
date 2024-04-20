@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="detail-news">
+  {% if post.author.profile.photo %}
+  <img src="{{ post.author.profile.photo.url }}" alt="{{ post.author.username }}" class="details-news-photo">
+  {% else %}
+  <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="details-news-photo">
+  {% endif %}
+  {% if post.author.first_name %}
+  <span class="author-name">{{ post.author.first_name }} {{ post.author.last_name }}</span>
+  {% else %}
+  {{ post.author }}
+  {% endif %}
+  <br><br>
+  <div id="news-title"><h1>{{ post.title }}</h1></div><br>
+  <div id="news-body">{{ post.body|linebreaks }}</div><br>
+  <div id="published-news"><i>Опубликовано {{ post.publish }}</i></div>
+  <button class="guess-num-button" onclick='history.back()'>Вернуться к новостям</button>  
+</div>
+{% endblock %}

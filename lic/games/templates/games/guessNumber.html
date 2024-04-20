@@ -26,7 +26,17 @@
           </div>
         </div>
         <button type="submit" class="guess-num-button">Отправить</button>
+        <div id="modal" class="modal">
+          <div class="modal-content">
+              <p>Поздравляем! Вы угадали число!</p>
+              <p id="attempts-count"></p>
+              <button id="restart" class="guess-num-button">Начать заново</button>
+              <button id="exit" class="guess-num-button">Выйти</button>
+          </div>
+        </div>
     </div>
 </div>
+
+
 <script src="{% static 'games/js/guessNumber.js' %}"></script>
 {% endblock %}

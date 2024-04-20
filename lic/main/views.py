@@ -11,10 +11,6 @@ def about(request):
     return render(request, 'main/about.html')
 
 @login_required
-def news(request):
-    return render(request, 'main/news.html')
-
-@login_required
 def message(request):
     return render(request, 'main/message.html')
 

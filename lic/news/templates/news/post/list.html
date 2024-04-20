@@ -1,0 +1,39 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<div id="main-news">
+  <p id="news-top">Новости</p>
+  <form method="post" class="add_news">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="published_news">Опубликовать новость</button>
+    <button type="submit" name="draft_news">Сохранить в черновики</button>
+    <button onclick="window.location.href = `{% url 'news:draft' %}`">Просмотреть черновики</button>
+  </form>
+  <div id="news-blocks">
+    {% for post in posts %}
+    <div class="news">
+      {% if post.author.profile.photo %}
+      <img src="{{ post.author.profile.photo.url }}" alt="{{ post.author.username }}" class="profile-photo">
+      {% else %}
+      <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="profile-photo">
+      {% endif %}
+      {% if post.author.first_name %}
+        {{ post.author.first_name }} {{ post.author.last_name }}
+      {% else %}
+        {{ post.author }}
+      {% endif %}
+      <div id="news-title"><h3>{{ post.title }}</h3></div>
+      <div id="news-body">{{ post.body|truncatewords:30|linebreaks }}
+      <a href="{% url 'news:post_detail' post.id %}"> Читать полностью </a>
+      </div>
+      <div id="published-news"><i>Опубликовано {{ post.publish }}</i></div>
+    </div><br>
+    {% endfor %}
+  </div>
+  {% include "pagination.html" with page=posts %}
+</div>
+{% endblock %}
