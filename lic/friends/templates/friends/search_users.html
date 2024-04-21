@@ -1,0 +1,37 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load friendshiptags %}
+
+
+{% block title %}Поиск друзей{% endblock %}
+{% block content %}
+<div id="content">
+  <form method="post" class="searchUsers">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Поиск</button>
+  </form>
+  {% if user_list %}
+    <div id="search-users-list-blocks">
+      {% for q_user in user_list %}
+        <div class="search-users-list">
+          {% if q_user.profile.photo %}
+            <img src="{{ q_user.profile.photo.url }}" alt="{{ q_user.username }}" class="profile-photo">
+          {% else %}
+            <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="profile-photo">
+          {% endif %}
+          {% if q_user.first_name %}
+            {{ q_user.first_name }} {{ q_user.last_name }}
+          {% else %}
+            {{ q_user }}
+          {% endif %}
+          {% if q_user.profile.country and q_user.profile.city %}
+            <p id="search-users-location">📍 {{ q_user.profile.country }}, {{ q_user.profile.city }} </p>
+          {% endif %}
+          <button>Добавить в друзья</button>
+        </div><br>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

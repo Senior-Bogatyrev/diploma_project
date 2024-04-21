@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load friendshiptags %}
+
+
+{% block title %}Друзья{% endblock %}
+{% block content %}
+<div id="friendsContainer">
+  <div id="infoPanel">
+    <p id="friendsCount">Друзей: </p>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:search_users' %}`">Найти друзей</button>
+  </div>
+</div>
+{% endblock %}

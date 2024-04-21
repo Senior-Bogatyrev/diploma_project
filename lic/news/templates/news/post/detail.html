@@ -1,7 +1,6 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
@@ -20,6 +19,13 @@
   <div id="news-title"><h1>{{ post.title }}</h1></div><br>
   <div id="news-body">{{ post.body|linebreaks }}</div><br>
   <div id="published-news"><i>Опубликовано {{ post.publish }}</i></div>
+  {% with post_id=post.id %}
+    {% if not like_status %}
+      <p><a href="{% url 'news:like_post' post.id %}" id="likes">🤍 {{ post.like_count }}</a></p>
+    {% else %}
+      <p><a href="{% url 'news:like_post' post.id %}" id="likes">❤️ {{ post.like_count }}</a></p>
+    {% endif %}
+  {% endwith %}
   <button class="guess-num-button" onclick='history.back()'>Вернуться к новостям</button>  
 </div>
 {% endblock %}

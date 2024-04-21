@@ -40,3 +40,24 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def like_count(self):
+        return self.like_set.count()
+    
+    def user_liked(self, user):
+        return self.like_set.filter(user=user).exists()
+    
+    def add_like(self, user):
+        Like.objects.create(user=user, post=self)
+
+    def remove_like(self, user):
+        Like.objects.filter(user=user, post=self).delete()
+    
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'post')

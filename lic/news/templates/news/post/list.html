@@ -1,5 +1,6 @@
 {% extends 'main/layout.html' %}
 {% load static %}
+{% load dict_filter %}
 
 {% block title %}Новости{% endblock %}
 
@@ -29,7 +30,14 @@
       <div id="news-title"><h3>{{ post.title }}</h3></div>
       <div id="news-body">{{ post.body|truncatewords:30|linebreaks }}
       <a href="{% url 'news:post_detail' post.id %}"> Читать полностью </a>
-      </div>
+      </div><br>
+      {% with post_id=post.id %}
+        {% if not like_status|dict:post_id %}
+          <p><a href="{% url 'news:like_post' post.id %}" id="likes">🤍 {{ post.like_count }}</a></p>
+        {% else %}
+          <p><a href="{% url 'news:like_post' post.id %}" id="likes">❤️ {{ post.like_count }}</a></p>
+        {% endif %}
+      {% endwith %}
       <div id="published-news"><i>Опубликовано {{ post.publish }}</i></div>
     </div><br>
     {% endfor %}

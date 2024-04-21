@@ -19,9 +19,5 @@ def settings(request):
     return render(request, 'main/settings.html')
 
 @login_required
-def friends(request):
-    return render(request, 'main/friends.html')
-
-@login_required
 def games(request):
     return render(request, 'main/friends.html')

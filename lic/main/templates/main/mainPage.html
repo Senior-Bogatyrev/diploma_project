@@ -3,21 +3,34 @@
 
 {% block title %}Главная страница{% endblock %}
 {% block content %}
-<div id="content">
-  <div>
+<div id="mainPageContainer">
+  <div id="profile-header">
+    <div>
       {% if user.profile.photo %}
       <img src="{{ user.profile.photo.url }}" alt="photo" id="main-photo">
       {% else %}
       <img src="{% static 'main/img/noPhoto.png' %}" id="main-photo">
       {% endif %}
-      <span style="vertical-align: middle;">
+    </div>
+    <div class="header-name">
+      <p id="user-inform">
         {% if user.first_name %}
           {{ user.first_name }} {{ user.last_name }}
         {% else %}
           {{ user }}
         {% endif %}
-      </span>
+      </p>
+      {% if user.profile.country and user.profile.city %}
+        <p id="location">📍 {{ user.profile.country }}, {{ user.profile.city }} </p>
+      {% endif %}
+    </div>
+      <div class="header-func">
+        <button onclick="window.location.href = `{% url 'edit' %}`">Редактировать профиль</button>
+      </div>
   </div>
-  <div></div>
+  <div id="profile-body">
+    <br><br>
+    <p>Контент не подвезли...</p>
+  </div>
 </div>
 {% endblock %}

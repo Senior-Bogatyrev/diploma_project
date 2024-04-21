@@ -523,7 +523,6 @@ ul.messages li button.close {
 
 .draft-button{
     margin-top: 10px;
-    /* background-color: rgba(0, 0, 0, 0.7); */
     color: white;
     padding: 10px 20px;
 }
@@ -555,9 +554,129 @@ ul.messages li button.close {
 
 /* main-page */
 
+#mainPageContainer{
+    margin-left: 35%;
+}
+#profile-header{
+    width: 50%;
+    background-color: rgba(206, 191, 191, 0.6);
+    font-size: 30px;
+    display: flex;
+    border-bottom: 2px solid black;
+}
+.header-name{
+    width: 70%;
+}
+.header-func{
+    width: 30%;
+}
+.header-func button{
+    background-color: rgb(0, 0, 0, 0.7);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+}
+#profile-body{
+    width: 50%;
+    height: 75vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: block;
+    text-align: center;
+}
+
+#profile-body p{
+    font-size: 30px;
+}
+
 #main-photo{
     margin: 10px;
     height: 100px;
     width: 100px;
     border: 2px solid white;
+    border-radius: 50%;
+}
+#user-inform{
+    position: absolute;
+    top: 140px;
+    padding-left: 30px;
+}
+#location{
+    position: absolute;
+    top: 180px;
+    font-size: 15px;
+    font-style: italic;
+    padding-left: 40px;
+}
+#likes{
+    font-size: 30px;
+    text-decoration: none;
+    background-color: #b0f8c5;
+    padding: 5px 10px;
+    border-radius: 30%;
+}
+
+
+/* friends */
+
+#friendsContainer{
+    margin-left: 35%;
+    width: 30%;
+    height: 90vh;
+    background-color: white;
+    color: black;
+}
+#infoPanel{
+    height: 7vh;
+    border-bottom: 2px solid black;
+}
+#friendsCount{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 25px;
+    float: left;
+}
+#friendSearch{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: rgb(0, 0, 0, 0.7);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+}
+
+.searchUsers{
+    padding: 1% 30%;
+}
+.searchUsers button{
+    margin-left: 317px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+}
+.searchUsers button:hover{
+    background-color: rgb(0, 0, 0);
+}
+.searchUsers label{
+    font-size: 80px;
+}
+#search-users-list-blocks{
+    justify-content: left;
+    text-align: left;
+    padding: 20px;
+}
+.search-users-list{
+    overflow-wrap: break-word;
+    overflow: hidden;
+    padding: 20px;
+    background-color: whitesmoke;
+    width: 40%;
+    max-height: 10%;
+    margin-left: 30%;
+}
+.search-users-list button{
+    float: right;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+#search-users-location{
+    font-size: 20px !important;
 }
