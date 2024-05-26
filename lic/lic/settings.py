@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'games',
     'news',
     'friends',
+    'message',
 
     # Стороннее приложение
     'friendship',

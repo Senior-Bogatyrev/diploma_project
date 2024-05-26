@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}Запросы в друзья{% endblock %}
+{% block content %}
+<div id="friendsContainer">
+  <div id="infoPanel">
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:friends_list' %}`">Мои друзья</button>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:followers' %}`">Подписчики</button>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:add_friend' %}`">Запросы в друзья {{ num_unrejected_requests }}</button>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:search_users' %}`">Найти друзей</button>
+  </div>
+    <h2>Запросы в друзья</h2>
+      {% for f_r in friendship_requests %}
+          <div class="container-for-friends-list">
+            <div class="fr-requests-container">
+              {% if f_r.from_user.profile.photo %}
+                <a href="{% url 'user' f_r.from_user.id %}">
+                  <img src="{{ f_r.from_user.profile.photo.url }}"
+                    alt="{{ f_r.from_user.profile.photo.user.first_name }}" 
+                    class="fr-request-photo">
+                </a>
+                {% else %}
+                <a href="{% url 'user' f_r.from_user.id %}">
+                  <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="fr-request-photo">
+                </a>
+            {% endif %}
+            </div>
+            <div class="fr-requests-container">
+              <a href="{% url 'user' f_r.from_user.id %}" class="friend-profile-view" >
+                {{ f_r.from_user.first_name }}
+                {{ f_r.from_user.last_name }}
+              </a>
+              <div class="friendship_requests">
+                {{ f_r.message }}
+              </div>
+              <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ f_r.from_user.id }}"/>
+                <input type="submit" name="add_friend" value="Добавить в друзья" class="fr-request-btn"/>
+                <input type="submit" name="follower" value="Оставить в подписчиках" class="fr-request-btn"/>
+              </form>
+            </div>
+          </div>
+        {% empty %}
+        <h3>У вас нет запросов на добавление</h3>
+      {% endfor %}
+</div>
+{% endblock %}

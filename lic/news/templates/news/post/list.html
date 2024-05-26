@@ -18,14 +18,18 @@
     {% for post in posts %}
     <div class="news">
       {% if post.author.profile.photo %}
-      <img src="{{ post.author.profile.photo.url }}" alt="{{ post.author.username }}" class="profile-photo">
+        <a href="{% url 'user' post.author.id %}" class="friend-profile-view">
+          <img src="{{ post.author.profile.photo.url }}" alt="{{ post.author.username }}" class="profile-photo"> 
+        </a>
       {% else %}
-      <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="profile-photo">
+        <a href="{% url 'user' post.author.id %}" class="friend-profile-view">
+          <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="profile-photo">
+        </a>
       {% endif %}
       {% if post.author.first_name %}
-        {{ post.author.first_name }} {{ post.author.last_name }}
+        <a href="{% url 'user' post.author.id %}" class="friend-profile-view"> {{ post.author.first_name }} {{ post.author.last_name }}</a>
       {% else %}
-        {{ post.author }}
+        <a href="{% url 'user' post.author.id %}" class="friend-profile-view">{{ post.author }}</a>
       {% endif %}
       <div id="news-title"><h3>{{ post.title }}</h3></div>
       <div id="news-body">{{ post.body|truncatewords:30|linebreaks }}

@@ -6,14 +6,22 @@
 {% block content %}
 <div class="detail-news">
   {% if post.author.profile.photo %}
-  <img src="{{ post.author.profile.photo.url }}" alt="{{ post.author.username }}" class="details-news-photo">
+    <a href="{% url 'user' post.author.id %}" class="friend-profile-view">
+      <img src="{{ post.author.profile.photo.url }}" alt="{{ post.author.username }}" class="details-news-photo">
+    </a>
   {% else %}
-  <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="details-news-photo">
+    <a href="{% url 'user' post.author.id %}" class="friend-profile-view">
+      <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="details-news-photo">
+    </a>
   {% endif %}
   {% if post.author.first_name %}
-  <span class="author-name">{{ post.author.first_name }} {{ post.author.last_name }}</span>
+    <a href="{% url 'user' post.author.id %}" class="friend-profile-view">
+      <span class="author-name">{{ post.author.first_name }} {{ post.author.last_name }}</span>
+    </a>
   {% else %}
-  {{ post.author }}
+    <a href="{% url 'user' post.author.id %}" class="friend-profile-view">
+      {{ post.author }}
+    </a>
   {% endif %}
   <br><br>
   <div id="news-title"><h1>{{ post.title }}</h1></div><br>

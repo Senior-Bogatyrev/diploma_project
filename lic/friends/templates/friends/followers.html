@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block title %}Подписчики{% endblock %}
+{% block content %}
+<div id="friendsContainer">
+  <div id="infoPanel">
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:friends_list' %}`">Мои друзья</button>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:followers' %}`">Подписчики</button>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:add_friend' %}`">Запросы в друзья {{ num_unrejected_requests }}</button>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:search_users' %}`">Найти друзей</button>
+  </div>
+    <h2>Мои подписчики {{ fol_count }}</h2>
+    {% for follower in followers %}
+        <div class="container-for-friends-list">
+          <div class="fr-requests-container">
+            {% if follower.profile.photo %}
+            <a href="{% url 'user' follower.id %}">
+              <img src="{{ follower.profile.photo.url }}"
+                alt="{{ follower.first_name }}" 
+                class="fr-request-photo">
+            </a>
+            {% else %}
+              <a href="{% url 'user' follower.id %}">
+                <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="fr-request-photo">
+              </a>
+            {% endif %}
+          </div>
+          <div class="fr-requests-container"> 
+            <a href="{% url 'user' follower.id %}" class="friend-profile-view">{{ follower.first_name }} {{ follower.last_name }}</a> <br>
+            {% if follower.profile.country and follower.profile.city %}
+              <p id="location-follower">📍 {{ follower.profile.country }}, {{ follower.profile.city }} </p>
+            {% endif %} <br>
+            <div>
+              <button class="fr-message-btn">Написать сообщение</button>
+            </div>
+          </div>
+        </div>
+    {% empty %}
+        <h3>У вас нет подписчиков.</h3>
+    {% endfor %}
+</div>
+{% endblock %}

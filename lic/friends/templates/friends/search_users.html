@@ -1,6 +1,7 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 {% load friendshiptags %}
+{% load dict_filter %}
 
 
 {% block title %}Поиск друзей{% endblock %}
@@ -14,22 +15,39 @@
   {% if user_list %}
     <div id="search-users-list-blocks">
       {% for q_user in user_list %}
-        <div class="search-users-list">
-          {% if q_user.profile.photo %}
-            <img src="{{ q_user.profile.photo.url }}" alt="{{ q_user.username }}" class="profile-photo">
-          {% else %}
-            <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="profile-photo">
-          {% endif %}
-          {% if q_user.first_name %}
-            {{ q_user.first_name }} {{ q_user.last_name }}
-          {% else %}
-            {{ q_user }}
-          {% endif %}
-          {% if q_user.profile.country and q_user.profile.city %}
-            <p id="search-users-location">📍 {{ q_user.profile.country }}, {{ q_user.profile.city }} </p>
-          {% endif %}
-          <button>Добавить в друзья</button>
-        </div><br>
+        {% if user.id != q_user.id %}
+          <div class="search-users-list">
+            {% if q_user.profile.photo %}
+              <a href="{% url 'user' q_user.id %}">
+                <img src="{{ q_user.profile.photo.url }}" alt="{{ q_user.username }}" class="profile-photo">
+              </a>
+            {% else %}
+              <a href="{% url 'user' q_user.id %}">
+                <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="profile-photo">
+              </a>
+            {% endif %}
+            {% if q_user.first_name %}
+              <a href="{% url 'user' q_user.id %}" class="friend-profile-view" >
+                {{ q_user.first_name }} {{ q_user.last_name }}
+              </a>
+            {% else %}
+              <a href="{% url 'user' q_user.id %}" class="friend-profile-view" >{{ q_user }} </a>
+            {% endif %}
+            {% if q_user.profile.country and q_user.profile.city %}
+              <p id="search-users-location">📍 {{ q_user.profile.country }}, {{ q_user.profile.city }} </p>
+            {% endif %}
+            
+            {% if not q_user.id == request.user.id %}
+              <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="to_user" value="{{ q_user.id }}" />
+                <input type="submit" name="status_fr_request" value="{{ already_requested|dict:q_user.id }}" 
+                 style="background-color: {{ background_color|dict:q_user.id }}"/>
+              </form>
+            {% endif %}
+            <div style="background-color: rgb(52, 205, 52);" ></div>
+          </div><br>
+        {% endif %}
       {% endfor %}
     </div>
   {% endif %}

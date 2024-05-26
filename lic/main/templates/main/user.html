@@ -1,13 +1,33 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-
-{% block title %}Пользователь{% endblock %}
+{% block title %}Главная страница{% endblock %}
 {% block content %}
-
-<div id="content">
-    <center>
-        <h1>Добро пожаловать, {{ user.first_name }}</h1>
-    </center>
+<div id="mainPageContainer">
+  <div id="profile-header">
+    <div>
+      {% if viewed_user.profile.photo %}
+      <img src="{{ viewed_user.profile.photo.url }}" alt="photo" id="main-photo">
+      {% else %}
+      <img src="{% static 'main/img/noPhoto.png' %}" id="main-photo">
+      {% endif %}
+    </div>
+    <div class="header-name">
+      <p id="viewed_user-inform">
+        {% if viewed_user.first_name %}
+          {{ viewed_user.first_name }} {{ viewed_user.last_name }}
+        {% else %}
+          {{ viewed_user }}
+        {% endif %}
+      </p>
+      {% if viewed_user.profile.country and viewed_user.profile.city %}
+        <p id="location">📍 {{ viewed_user.profile.country }}, {{ viewed_user.profile.city }} </p>
+      {% endif %}
+    </div>
+  </div>
+  <div id="profile-body">
+    <br><br>
+    <p>Контент не подвезли...</p>
+  </div>
 </div>
 {% endblock %}

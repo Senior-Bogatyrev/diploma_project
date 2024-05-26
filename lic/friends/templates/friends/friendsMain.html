@@ -1,14 +1,50 @@
 {% extends 'main/layout.html' %}
 {% load static %}
-{% load friendshiptags %}
 
 
 {% block title %}Друзья{% endblock %}
 {% block content %}
 <div id="friendsContainer">
   <div id="infoPanel">
-    <p id="friendsCount">Друзей: </p>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:friends_list' %}`">Мои друзья</button>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:followers' %}`">Подписчики</button>
+    <button id="friendSearch" onclick="window.location.href = `{% url 'friends:add_friend' %}`">Запросы в друзья {{ num_unrejected_requests }}</button>
     <button id="friendSearch" onclick="window.location.href = `{% url 'friends:search_users' %}`">Найти друзей</button>
   </div>
+    <h2>Мои друзья {{ friends_count }}</h2>
+    {% for friend in friends %}
+        <div class="container-for-friends-list">
+          <div class="fr-requests-container">
+            {% if friend.profile.photo %}
+              <a href="{% url 'user' friend.id %}">
+                <img src="{{ friend.profile.photo.url }}"
+                  alt="{{ friend.first_name }}" 
+                  class="fr-request-photo">
+              </a>
+            {% else %}
+              <a href="{% url 'user' friend.id %}">
+                <img src="{% static 'main/img/noPhoto.png' %}" alt="noPhoto" class="fr-request-photo">
+              </a>
+            {% endif %}
+          </div>
+          <div class="fr-requests-container"> 
+            <a href="{% url 'user' friend.id %}" class="friend-profile-view">{{ friend.first_name }} {{ friend.last_name }}</a> <br>
+            {% if friend.profile.country and friend.profile.city %}
+              <p id="location-friend">📍 {{ friend.profile.country }}, {{ friend.profile.city }} </p>
+            {% endif %} <br>
+            <div>
+              <form method="post" id="form-btn-friend">
+                {% csrf_token %}
+                <input type="hidden" name="to_user_id" value="{{ friend.id }}"/>
+                <input type="submit" name="write_message" value="Написать сообщение" class="fr-message-btn"/>
+                <input type="submit" name="delete_friend" value="Удалить из друзей" class="fr-delete-btn"/>
+              </form>
+
+            </div>
+          </div>
+        </div>
+    {% empty %}
+        <h3>У вас нет друзей.</h3>
+    {% endfor %}
 </div>
 {% endblock %}

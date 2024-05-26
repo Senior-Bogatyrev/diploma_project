@@ -599,6 +599,7 @@ ul.messages li button.close {
     top: 140px;
     padding-left: 30px;
 }
+
 #location{
     position: absolute;
     top: 180px;
@@ -625,22 +626,21 @@ ul.messages li button.close {
     color: black;
 }
 #infoPanel{
-    height: 7vh;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    height: 5vh;
     border-bottom: 2px solid black;
 }
-#friendsCount{
-    margin-top: 10px;
-    margin-left: 10px;
-    font-size: 25px;
-    float: left;
-}
+
+
 #friendSearch{
-    float: right;
     margin-top: 10px;
+    margin-bottom: 10px;
     margin-right: 10px;
     background-color: rgb(0, 0, 0, 0.7);
     color: rgb(255, 255, 255);
-    padding: 10px 20px;
+    padding: 5px 10px;
 }
 
 .searchUsers{
@@ -679,4 +679,59 @@ ul.messages li button.close {
 }
 #search-users-location{
     font-size: 20px !important;
+}
+.friendship_requests{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    color: black;
+}
+.container-for-friends-list{
+    display: flex;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.fr-requests-container{
+    height: 100px;
+    padding-right: 10px;
+}
+.fr-request-photo{
+    height: 100px;
+    width: 100px;
+}
+.fr-request-btn{
+    padding: 5px;
+    color: white;
+    background-color: #4aa1e4;
+}
+.fr-delete-btn{
+    padding: 5px;
+    color: white;
+    background-color: rgb(200, 31, 31);
+}
+.fr-message-btn{
+    padding: 5px;
+    color: white;
+    background-color: rgb(124, 166, 60);
+}
+#location-friend{
+    font-size: 15px;
+    font-style: italic;
+    padding-left: 40px;
+}
+#form-btn-friend{
+    padding: 0;
+}
+
+.friend-profile-view:link,
+.friend-profile-view:hover,
+.friend-profile-view:visited,
+.friend-profile-view:active {
+    color: rgb(49, 49, 49);
+    font-size: 20px;
+    font-style: italic;
+    text-decoration: none;
 }
